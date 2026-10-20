@@ -46,6 +46,34 @@
   });
 
   cw3.addEventListener("click", function () {
-    //TODO
+    const popup = document.createElement("div");
+    popup.textContent = "Loading...";
+
+    popup.style.position = "fixed";
+    popup.style.top = "50%";
+    popup.style.left = "50%";
+    popup.style.transform = "translate(-50%, -50%)";
+    popup.style.backgroundColor = "blue";
+    popup.style.color = "white";
+    popup.style.padding = "20px 40px";
+    popup.style.borderRadius = "10px";
+    popup.style.fontWeight = "bold";
+    popup.style.fontSize = "24px";
+    popup.style.zIndex = "9999";
+
+    document.body.appendChild(popup);
+    answer.innerHTML = "";
+
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => response.json())
+      .then((array) => {
+        setTimeout(() => {
+          if (document.body.contains(popup)) {
+            document.body.removeChild(popup);
+          }
+
+          answer.innerHTML = "Ukonczono ladowanie";
+        }, 1000);
+      });
   });
 })();
