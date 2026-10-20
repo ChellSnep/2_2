@@ -38,7 +38,11 @@
   });
 
   cw2.addEventListener("click", function () {
-    //TODO
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
+      .then((response) => response.json())
+      .then((post) => {
+        console.log("Dane wybranego posta:", post);
+      });
   });
 
   cw3.addEventListener("click", function () {
